@@ -1,0 +1,31 @@
+<!DOСTYPE html>
+<html>
+    <head>
+        <script type="text/javascript" src="index_24_dynamic_list.js"></script>
+    </head>
+    <body>
+        <div>Products List</div>
+            <div style="margin: 5;">
+                <label for="nameInput">name:</label> 
+                <input id="nameInput" type="text" size="40">
+            </div>
+            <div style="margin: 5;">
+                <label for="costInput">cost:</label> 
+                <input id="costInput" type="text" size="40">
+            </div>
+            <div>
+                <button type="button" onclick="addProduct()">Add</button>
+                <button type="button"onclick="sumProduct()">Sum</button>
+            </div>
+            <div style="margin: 5;">
+                <label for="productsSum">Products Sum:</label> 
+                <input id="productsSum" disabled type="text" size="40">
+
+            </div>
+             
+        <ul id="productsList">
+            <!-- <li>Coffee</li> -->
+            
+          </ul> 
+    </body>
+</html>
