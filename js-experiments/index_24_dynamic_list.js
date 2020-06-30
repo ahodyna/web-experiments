@@ -1,10 +1,11 @@
 let products = [];
 
 function addProduct() {
-    let name = document.getElementById("nameInput").value
+    let inputNode = document.getElementById("nameInput");
+    let name = inputNode.value
     let cost = document.getElementById("costInput").value
 
-    products.push({ "name": name, "cost": Number.parseInt(cost) })
+    products.push({ "name": name, "cost": Number.parseFloat(cost) })
     console.log(products)
 
 
