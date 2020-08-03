@@ -77,33 +77,31 @@ let animals = [
     }
 ]
 
-// 1 вывести в консоль название класса с самым дорогим животным
+// 2. написать веб приложение (сайтик) с инпутом и кнопкой, которое:
+// - позволило бы пользователю ввести название интересующего класса в инпут
+// - при нажатии кнопки 'Calculate class amount' пользователю должна быть показана суммарная стоимость животных в этом классе
+ 
 
-function getMostExpensiveAnimalClassName(classesArr) {
-    let mostExpensiveAnimalClassName = null;
+function CalculateClassAmount (){
 
-    let mostExpensiveClassId = mostExpensiveAnimal(animals)
+    let className = document.getElementById("textInput").value 
+    
+     let sum = 0;
+    let classId = null
 
-    for (let i = 0; i < classesArr.length; i++) {
-        if (mostExpensiveClassId == classesArr[i].id)
-            mostExpensiveAnimalClassName = classesArr[i].name
-    }
-    return mostExpensiveAnimalClassName
-}
+     for (let i = 0; i < classes.length; i++){
+         if (className == classes[i].name)
+            classId = classes[i].id
+     }
 
-
-function mostExpensiveAnimal(animalArr) {
-
-    let priceAnimal = 0;
-    let mostExpensiveClass = null;
-
-    for (let i = 0; i < animalArr.length; i++) {
-        if (priceAnimal < animalArr[i].marketPrice) {
-            priceAnimal = animalArr[i].marketPrice
-            mostExpensiveClass = animalArr[i].classId
+    for (let i = 0; i < animals.length; i++){
+        if (classId == animals[i].classId){
+            sum = sum + animals[i].marketPrice
         }
     }
-    return mostExpensiveClass
-}
 
-console.log(getMostExpensiveAnimalClassName(classes))
+    document.getElementById("text").value = sum;
+}
+    
+
+   
