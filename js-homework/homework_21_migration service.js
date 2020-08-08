@@ -91,7 +91,7 @@ let candidates = [
 
 function createSection(elementIndex, name, surname, occupationId) {
     let componentSection = document.createElement('div')
-    
+
     let labelNode = document.createElement('div');
     let fullnameTextNode = document.createTextNode("full name:" + name + ' ' + surname);
     labelNode.appendChild(fullnameTextNode);
@@ -103,10 +103,10 @@ function createSection(elementIndex, name, surname, occupationId) {
     componentSection.appendChild(labelNode1)
 
     let button = document.createElement('button')
-    let buttonText = document.createTextNode ('delete');
+    let buttonText = document.createTextNode('delete');
     button.appendChild(buttonText)
-    button.addEventListener("click", function() {
-        candidates.splice(elementIndex,1)
+    button.addEventListener("click", function () {
+        candidates.splice(elementIndex, 1)
         populateUserSection();
     });
 
@@ -115,6 +115,22 @@ function createSection(elementIndex, name, surname, occupationId) {
     return componentSection;
 }
 
+
+function addCandidate() {
+
+    let candidateName = document.getElementById("nameInput").value
+    let candidateSurname = document.getElementById("surnameInput").value
+    let candidateOccupation = document.getElementById("occupationInput").value
+
+    let newCandidate = {
+        "name": candidateName,
+        "surname": candidateSurname,
+        "occupationId": candidateOccupation
+    }
+    candidates.push(newCandidate)
+
+    populateUserSection();
+}
 
 function populateUserSection() {
     let candidatesSections = document.getElementById("candidatesSections");
