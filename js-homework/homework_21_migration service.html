@@ -7,30 +7,31 @@
 </head>
 
 <body>
-    
-    <div id="addCandidatesSections">
-        <div>
-            <label for="nameInput">name:</label>
-            <input id="nameInput" type="text">
-        </div>
-        
-        <div>
-            <label for="surnameInput">surname:</label>
-            <input id="surnameInput" type="text">
+    <div class ="center borderedSection">
+
+        <div id="addCandidatesSections" class="borderedSection componentSection">
+            <div>
+                <label for="nameInput">name:</label>
+                <input id="nameInput" type="text">
+            </div>
+
+            <div>
+                <label for="surnameInput">surname:</label>
+                <input id="surnameInput" type="text">
+            </div>
+
+            <div>
+                <label for="occupationInput">occupation:</label>
+                <input id="occupationInput" type="text">
+            </div>
+
+            <button onclick="addCandidate()">Add</button>
         </div>
 
-        <div>
-            <label for="occupationInput">occupation:</label>
-            <input id="occupationInput" type="text">
+        <div id="candidatesSections" class="borderedSection componentSection">
         </div>
 
-        <button onclick="addCandidate()">Add</button>
     </div>
-
-    <div id="candidatesSections">
-    </div>
-
-
 </body>
 <script src="homework_21_migration service.js"></script>
 

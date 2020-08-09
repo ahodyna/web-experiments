@@ -1,9 +1,13 @@
-.candidatesSections {
-    background-color: rgba(0, 255, 255, 0.5);
+.center{
+    margin-left: auto;
+    margin-right: auto;
+    width: 500px;
 }
-.addCandidatSections {
-    background-color: rgba(55, 0, 255, 0.5);
+
+.borderedSection {
+    border-style: groove;
 }
-.occuppationSection {
-    background-color: rgba(0, 255, 115, 0.5);
+
+.componentSection {
+    margin: 10px;
 }
