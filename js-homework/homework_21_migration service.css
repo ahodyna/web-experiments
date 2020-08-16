@@ -11,3 +11,18 @@
 .componentSection {
     margin: 10px;
 }
+
+.section1 {
+    width: 47%;
+    margin-right: auto;
+    display: inline-block;
+    vertical-align: top;
+}
+
+.section2 {
+    width: 50%;
+    margin-left: auto;
+    border-style: groove;
+    display: inline-block;
+    vertical-align: top;
+}

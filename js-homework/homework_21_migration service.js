@@ -97,8 +97,15 @@ function createSection(elementIndex, name, surname, occupationId) {
     labelNode.appendChild(fullnameTextNode);
     componentSection.appendChild(labelNode)
 
+    let occupationTitle = null;
+    for (let i = 0; i < occupations.length; i++) {
+        if (occupationId == occupations[i].id) {
+            occupationTitle = occupations[i].title
+        }
+    }
+
     let labelNode1 = document.createElement('div');
-    let occupationTextNode = document.createTextNode("occupation: " + occupationId)
+    let occupationTextNode = document.createTextNode("occupation: " + occupationTitle)
     labelNode1.appendChild(occupationTextNode);
     componentSection.appendChild(labelNode1)
 
@@ -142,4 +149,37 @@ function populateUserSection() {
     }
 }
 
+
+function createOccupationSection (title, visaType) {
+
+    let occupationSection = document.createElement('div')
+
+    let labelNode = document.createElement('div');
+    let fullnameTextNode = document.createTextNode("title:" + title);
+    labelNode.appendChild(fullnameTextNode);
+    occupationSection.appendChild(labelNode)
+
+    
+
+    let labelNode1 = document.createElement('div');
+    let fullnameTextNode1 = document.createTextNode("VISA:" + visaType);
+    labelNode1.appendChild(fullnameTextNode1);
+    occupationSection.appendChild(labelNode1)
+ 
+
+return occupationSection
+}
+
+function occupationSection (){
+    let occupationSections = document.getElementById("occupation");
+    occupationSections.innerHTML = ""
+
+    for (let i = 0; i < occupations.length; i++) {
+        let  occupationsComponent = createOccupationSection(occupations[i].title, occupations[i].visaType)
+        occupationSections.appendChild(occupationsComponent)
+    }
+}   
+
+
 populateUserSection()
+occupationSection()
