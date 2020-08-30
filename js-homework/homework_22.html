@@ -1,0 +1,56 @@
+<!DOСTYPE html>
+    <html>
+
+    <head>
+        <script src="../js-experiments/lib/jquery-3.5.1.js"></script>
+        <script src="homework_22.js"></script>
+        <link rel="stylesheet" type="text/css" href="homework_22.css">
+    </head>
+
+    <body>
+        <table border="1">
+            <thead> 
+                <tr>
+                    <th>місяць</th>
+                    <th>заробітня плата($)</th>
+                    <th>курс НБУ на дату зарахування</th>
+                    <th>списано</th>
+                    <th>податок</th>
+                    <th>податок на різницю</th>
+                    <th>сума податків</th>
+                </tr>
+               
+            </thead>
+            <tbody id="smetaTableBody">
+            </tbody>
+        </table>
+        <p>
+        <div class="section">
+            <div>
+                <label for="monthInput">місяць:</label>
+                <input type="text" id='monthInput'>
+            </div>
+            <div>
+                <label for="salaryInput">заробітня плата($):</label>
+                <input type="text" id='salaryInput'>
+            </div>
+            <div>
+                <label for="exchangeRateInput">курс НБУ на дату зарахування:</label>
+                <input type="text"id='exchangeRateInput'>
+            </div>
+            <div>
+                <label for="withdrawСashInput">списано:</label>
+                <input type="text" id='withdrawСashInput'>
+            </div>
+            <div>
+                <button id='addSectionButton'>додати</button>
+            </div>
+            <div>
+                <button id='countButton'>порахувати</button>
+            </div>
+        </div>
+    </p>
+    </body>
+ 
+
+    </html>
