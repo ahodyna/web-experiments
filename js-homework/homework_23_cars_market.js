@@ -1,5 +1,7 @@
 $(document).ready(function () {
 
+    $("#calculateButton").on('click', calculateTotalCost)
+
     let carClasses = [
         {
             "price": 10000,
@@ -43,16 +45,19 @@ $(document).ready(function () {
         }
     ]
 
-    createTable(cars, carClasses);
+    populateTable(cars, carClasses);
 
 });
 
-function createTable(cars, carClasses) {
+
+
+function populateTable(cars, carClasses) {
 
     for (let i = 0; i < cars.length; i++) {
         let car = cars[i]
         totalCost = car.price * car.amount
 
+        // $("div#mainPanel div table ")
 
         let className = findClassName(carClasses, car.price)
 
@@ -61,14 +66,13 @@ function createTable(cars, carClasses) {
             "<td>" + car.name + "</td>" +
             "<td>" + car.price + "</td>" +
             "<td>" + car.amount + "</td>" +
-            "<td>" + totalCost + "</td>" +
+            "<td class='totalCost'>" + totalCost + "</td>" +
             "</tr>");
-        $("#tableRow").append($tableRow);
+        $("#carsTableBody").append($tableRow);
     }
-
 }
 
-function findClassName(classArr, price) {
+function findClassName(classArr, price) {   // TODO: check calculation
     let nameClass = '';
     for (let i = 0; i < classArr.length; i++)
         if (price <= classArr[0].price) {
@@ -82,6 +86,19 @@ function findClassName(classArr, price) {
     return nameClass
 }
 
+function calculateTotalCost() {
+    let $carCosts = $('tbody#carsTableBody tr td.totalCost')
+    let sum = 0;
+    for (let i = 0; i < $carCosts.length; i++) {
+
+        let carClassTotalCostTD = $carCosts.get(i);
+        let carClassTotalCost = $(carClassTotalCostTD).html()
+        let carClassTotalCostNumber = parseFloat(carClassTotalCost)
+
+        sum += carClassTotalCostNumber
+    }
+    $("#totalcost").val(sum)
+}
 
 // при загрузке страницы должна отобразится таблица c 5 колонками
 // колонки: class, car, price, amount, total cost
