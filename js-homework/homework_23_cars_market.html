@@ -1,38 +1,43 @@
 <!DOСTYPE html>
-<html>
-    <head> 
+    <html>
+
+    <head>
         <script src="../js-experiments/lib/jquery-3.5.1.js"></script>
-         <script src="homework_23_cars_market.js"></script>
-        
+        <script src="homework_23_cars_market.js"></script>
+        <link rel="stylesheet" type="text/css" href="homework_23_cars_market.css">
+
     </head>
+
     <body>
-        <body>
-            <table border="1">
-                <thead> 
+        <div class="section">
+            <table class="carTableClass">
+                <thead>
                     <tr>
-                        <th >class</th>
+                        <th>class</th>
                         <th>car</th>
                         <th>price</th>
                         <th>amount</th>
                         <th>total cost</th>
                     </tr>
-                   
+
                 </thead>
-                <tbody id ='carsTableBody'>
+                <tbody id='carsTableBody'>
 
                 </tbody>
             </table>
-            <p>
-<div>
-    <div>
-        <label for="text">Sum:</label>
-        <input  id ="totalcost" type="text"disabled type="text" size="40">
-    </div>
-    <div>
-        <button id= "calculateButton">Calculate total cost</button>
-    </div>
-</div>
 
+            <p>
+            <div>
+                <div>
+                    <label for="text">Sum:</label>
+                    <input id="totalcost" type="text" disabled type="text" size="40">
+                </div>
+                <div>
+                    <button id="calculateButton">Calculate total cost</button>
+                </div>
+            </div>
             </p>
+        </div>
     </body>
-</html>
+
+    </html>

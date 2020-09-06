@@ -1,0 +1,19 @@
+.section {
+   display: flex;
+   flex-direction: column;
+   align-items: center;
+}
+
+.carTableClass {
+   width: 500px;
+ 
+}
+
+table {
+   border-spacing: 0;
+}
+
+
+table td, table th {
+   border: 1px black solid;
+}
