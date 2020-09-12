@@ -1,49 +1,50 @@
+let carClasses = [
+    {
+        "price": 10000,
+        "class": "Econom"
+    },
+    {
+        "price": 20000,
+        "class": "Comfort"
+    },
+    {
+        "price": 30000,
+        "class": "Bussiness"
+    }
+]
+
+let cars = [
+    {
+        "name": "Mitsubishi lancer",
+        "price": 12000,
+        "amount": 2
+    },
+    {
+        "name": "BMW X5",
+        "price": 31500,
+        "amount": 3
+    },
+    {
+        "name": "Lada calina",
+        "price": 7900,
+        "amount": 7
+    },
+    {
+        "name": "Audi A8",
+        "price": 28300,
+        "amount": 3
+    },
+    {
+        "name": "Lexus M3",
+        "price": 16500,
+        "amount": 3
+    }
+]
+
 $(document).ready(function () {
 
     $("#calculateButton").on('click', calculateTotalCost)
-
-    let carClasses = [
-        {
-            "price": 10000,
-            "class": "Econom"
-        },
-        {
-            "price": 20000,
-            "class": "Comfort"
-        },
-        {
-            "price": 30000,
-            "class": "Bussiness"
-        }
-    ]
-
-    let cars = [
-        {
-            "name": "Mitsubishi lancer",
-            "price": 12000,
-            "amount": 2
-        },
-        {
-            "name": "BMW X5",
-            "price": 31500,
-            "amount": 3
-        },
-        {
-            "name": "Lada calina",
-            "price": 7900,
-            "amount": 7
-        },
-        {
-            "name": "Audi A8",
-            "price": 28300,
-            "amount": 3
-        },
-        {
-            "name": "Lexus M3",
-            "price": 16500,
-            "amount": 3
-        }
-    ]
+    $('#addSectionButton').on('click', addSection) 
 
     populateTable(cars, carClasses);
 
@@ -99,6 +100,36 @@ function calculateTotalCost() {
     }
     $("#totalcost").val(sum)
 }
+
+ function addSection() {
+
+    let $carInput = $('#carInput')
+    let carName = $carInput.val()
+
+    let $priceInput = $('#priceInput')
+    let price = $priceInput.val()
+
+    let $amountInput = $('#amountInput')
+    let amountCars = $amountInput.val()
+
+    let className = findClassName(carClasses, price)
+    let totalCost = price * amountCars
+
+    let $tableRowButton = $("<tr id=row" + ">" +
+    "<td>" + className  + "</td>" +
+    "<td>" + carName + "</td>" +
+    "<td>" + price + "</td>" +
+    "<td>" + amountCars  + "</td>" +
+    "<td class='totalCost'>" + totalCost + "</td>" +
+    "</tr>");
+$("#carsTableBody").append($tableRowButton);
+
+
+$carInput.val('');
+$priceInput.val('');
+$amountInput.val('');
+}
+
 
 // при загрузке страницы должна отобразится таблица c 5 колонками
 // колонки: class, car, price, amount, total cost
