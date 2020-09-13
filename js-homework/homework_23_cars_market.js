@@ -41,18 +41,21 @@ let cars = [
     }
 ]
 
+
+
 $(document).ready(function () {
 
     $("#calculateButton").on('click', calculateTotalCost)
     $('#addSectionButton').on('click', addSection) 
 
-    populateTable(cars, carClasses);
-
+    populateTable();
+  
 });
 
 
 
-function populateTable(cars, carClasses) {
+function populateTable() {
+    $('#carsTableBody').html("")
 
     for (let i = 0; i < cars.length; i++) {
         let car = cars[i]
@@ -68,7 +71,9 @@ function populateTable(cars, carClasses) {
             "<td>" + car.price + "</td>" +
             "<td>" + car.amount + "</td>" +
             "<td class='totalCost'>" + totalCost + "</td>" +
+            "<td><button onclick='deleteCar(" + i + ")'>delete</button></td>" +  
             "</tr>");
+        
         $("#carsTableBody").append($tableRow);
     }
 }
@@ -111,26 +116,27 @@ function calculateTotalCost() {
 
     let $amountInput = $('#amountInput')
     let amountCars = $amountInput.val()
+    
+   let newTableRow = {
+    "name": carName,
+    "price": price,
+    "amount": amountCars,
+   }
 
-    let className = findClassName(carClasses, price)
-    let totalCost = price * amountCars
+   cars.push(newTableRow)
 
-    let $tableRowButton = $("<tr id=row" + ">" +
-    "<td>" + className  + "</td>" +
-    "<td>" + carName + "</td>" +
-    "<td>" + price + "</td>" +
-    "<td>" + amountCars  + "</td>" +
-    "<td class='totalCost'>" + totalCost + "</td>" +
-    "</tr>");
-$("#carsTableBody").append($tableRowButton);
+    $carInput.val('');
+    $priceInput.val('');
+    $amountInput.val('');
 
-
-$carInput.val('');
-$priceInput.val('');
-$amountInput.val('');
+    populateTable()
 }
 
+function deleteCar(i){
+    cars.splice(i, 1)
 
+    populateTable()
+}
 // при загрузке страницы должна отобразится таблица c 5 колонками
 // колонки: class, car, price, amount, total cost
     // class, - значение должно расчитываться основываясь на цене автомобиля
