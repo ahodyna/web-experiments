@@ -1,0 +1,27 @@
+[
+    {
+        "name": "Mitsubishi lancer",
+        "price": 12000,
+        "amount": 2
+    },
+    {
+        "name": "BMW X5",
+        "price": 31500,
+        "amount": 3
+    },
+    {
+        "name": "Lada calina",
+        "price": 7900,
+        "amount": 7
+    },
+    {
+        "name": "Audi A8",
+        "price": 28300,
+        "amount": 3
+    },
+    {
+        "name": "Lexus M3",
+        "price": 16500,
+        "amount": 3
+    }
+]
