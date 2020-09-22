@@ -1,0 +1,19 @@
+.post {
+   margin: 10px;
+   border: 1px solid blue;
+}
+
+.postTitle {
+   background-color: cornflowerblue;
+   padding: 5px;
+}
+
+.postBody {
+   padding: 5px;
+}
+
+.postFooter {
+   background-color: silver;
+   padding: 5px;
+}
+
