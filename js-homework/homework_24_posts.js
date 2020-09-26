@@ -1,44 +1,61 @@
 $(document).ready(function () {
-    $.get('https://jsonplaceholder.typicode.com/posts', function (data) {
-        comments = data
-        appendPost()
-    })
-
-})
-
-let comments = []
-
-$.get('https://jsonplaceholder.typicode.com/users', function (data) {
-    users = data
+    reCreatePostPage()
 })
 
 
-let users = []
-
-function createPostComponenta(title, body, name, mail) {
+function createPostComponent(userId, title, body, name, mail) {
     let $component = $('<div class="post"></div>')
-    $($component).append('<div class="postTitle"> ' + title + '</div>')
-    $($component).append('<div class="postBody"> ' + body + '</div>')
-    $($component).append('<div class="postFooter">' + name + ' <span>' + mail + '</span></div>')
+    $component.append('<div class="postTitle"> ' + title + '</div>')
+    $component.append('<div class="postBody"> ' + body + '</div>')
+
+    $postFooter = $('<div class="postFooter"></div>')
+    $component.append($postFooter)
+
+    let $userLink = $('<span class="fake-link">' + name + ' ' + mail + '</span>')
+    $postFooter.append($userLink)
+
+    $userLink.on('click', function () {
+        reCreateUserPage(userId)
+    })
     return $component
 }
 
-function appendPost() {
-    for (let i = 0; i < comments.length; i++) {
-        commentsBody = comments[i].body
-        commentsTitle = comments[i].title
-        userId = comments[i].userId
-
-
-        for (let j = 0; j < users.length; j++) {
-            if (users[j].id == userId) {
-                let name = users[j].username
-                let mail = users[j].email
-
-                let component = createPostComponenta(commentsTitle, commentsBody, name, mail)
-                $("#posts").append(component);
-
-            }
+function findUserById(usersArray, userId) {
+    for (let i = 0; i < usersArray.length; i++) {
+        if (usersArray[i].id == userId) {
+            return usersArray[i];
         }
     }
+    return null;
+}
+
+function reCreatePostPage() {
+    let postsPromise = $.get('https://jsonplaceholder.typicode.com/posts')
+    let usersPromise = $.get('https://jsonplaceholder.typicode.com/users')
+
+    $.when(postsPromise, usersPromise).done(function (postsResponse, usersResponse) {
+        let posts = postsResponse[0]
+        let users = usersResponse[0]
+
+        let $postList = $('<div id="postList"></div>')
+        for (let i = 0; i < posts.length; i++) {
+            let postBody = posts[i].body
+            let postTitle = posts[i].title
+            let userId = posts[i].userId
+
+            let user = findUserById(users, userId)
+
+            let $postComponent = createPostComponent(userId, postTitle, postBody, user.name, user.email)
+            $postList.append($postComponent)
+        }
+        $('#root').append($postList)
+
+    })
+}
+
+
+function reCreateUserPage(userId) {
+    // $('#root').html(null)
+
+
 }

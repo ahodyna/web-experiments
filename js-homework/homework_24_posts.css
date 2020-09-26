@@ -17,3 +17,8 @@
    padding: 5px;
 }
 
+.fake-link {
+   color: blue;
+   text-decoration: underline;
+   cursor: pointer;
+}
