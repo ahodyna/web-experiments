@@ -56,12 +56,9 @@ function reCreatePostPage() {
 
 
 function reCreateUserPage(userId) {
-    $('#root').html(null)
-
-    $.get('https://jsonplaceholder.typicode.com/users', function (data) {
-        let users = data
-
-        let user = findUserById(users, userId)
+    $.get('https://jsonplaceholder.typicode.com/users/' + userId, function (data) {
+        $('#root').html(null)
+        let user = data
 
         let name = user.name
         let mail = user.email
@@ -87,11 +84,15 @@ function createUserComponent(userId, name, mail, street, city, companyName, bs) 
     let $buttonPosts = $('<button>show user posts</button>')
     $componentUser.append($buttonPosts)
 
-    let $componentBlock = $('<div id="userPosts"></div>')
-    $componentUser.append($componentBlock)
+    let $buttonTodos = $('<button>show to do</button>')
+    $componentUser.append($buttonTodos)
+
+    let $userInfoComponent = $('<div id="userInfo"></div>')
+    $componentUser.append($userInfoComponent)
 
     $buttonPosts.on('click', function () {
         $.get('https://jsonplaceholder.typicode.com/posts', function (data) {
+            $userInfoComponent.html(null)
             let posts = data
             for (let i = 0; i < posts.length; i++) {
                 let postsBody = posts[i].body
@@ -105,9 +106,33 @@ function createUserComponent(userId, name, mail, street, city, companyName, bs) 
                 $componentUserPosts.append(componentPostsTitleUser)
                 $componentUserPosts.append(componentPostsBodyUser)
 
-                $componentBlock.append($componentUserPosts)
+                $userInfoComponent.append($componentUserPosts)
             }
+        })
+    })
 
+    $buttonTodos.on('click', function () {
+        $.get('https://jsonplaceholder.typicode.com/todos', function (data) {
+            $userInfoComponent.html(null)
+            let todos = data
+
+            for (let i = 0; i < todos.length; i++) {
+
+                let title = todos[i].title
+                let completed = todos[i].completed
+
+                let componentTitleTodos = $('<div>' + title + '</div>')
+                
+                let checkedAttribute = completed? 'checked': ''
+                let componentCheckbox = $('<div>' + 'completed: <input type="checkbox" ' + checkedAttribute + '></div>')
+
+                let $componentBlockTodos = $('<div></div>')
+
+                $componentBlockTodos.append(componentTitleTodos)
+                $componentBlockTodos.append(componentCheckbox)
+
+                $userInfoComponent.append($componentBlockTodos)
+            }
 
         })
     })
