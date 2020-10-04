@@ -87,6 +87,9 @@ function createUserComponent(userId, name, mail, street, city, companyName, bs) 
     let $buttonTodos = $('<button>show to do</button>')
     $componentUser.append($buttonTodos)
 
+    let $buttonAlbums = $('<button>album</button>')
+    $componentUser.append($buttonAlbums)
+
     let $userInfoComponent = $('<div id="userInfo"></div>')
     $componentUser.append($userInfoComponent)
 
@@ -122,8 +125,8 @@ function createUserComponent(userId, name, mail, street, city, companyName, bs) 
                 let completed = todos[i].completed
 
                 let componentTitleTodos = $('<div>' + title + '</div>')
-                
-                let checkedAttribute = completed? 'checked': ''
+
+                let checkedAttribute = completed ? 'checked' : ''
                 let componentCheckbox = $('<div>' + 'completed: <input type="checkbox" ' + checkedAttribute + '></div>')
 
                 let $componentBlockTodos = $('<div></div>')
@@ -134,6 +137,51 @@ function createUserComponent(userId, name, mail, street, city, companyName, bs) 
                 $userInfoComponent.append($componentBlockTodos)
             }
 
+        })
+    })
+
+    $buttonAlbums.on('click', function () {
+        $.get('https://jsonplaceholder.typicode.com/albums', function (data) {
+            $userInfoComponent.html(null)
+
+            let album = data
+
+            for (let i = 0; i < album.length; i++) {
+
+                if (userId == album[i].userId) {
+                    let $componentBlockAlbum = $('<div class="album"></div>')
+
+                    let $componentTitleAlbum = $('<div>' + album[i].title + '</div>')
+                    $componentBlockAlbum.append($componentTitleAlbum)
+
+                    let $photosCollection = $('<div class ="photosCollection"></div>')
+                    $componentBlockAlbum.append($photosCollection)
+
+                    $userInfoComponent.append($componentBlockAlbum)
+
+                    $.get('https://jsonplaceholder.typicode.com/photos', function (photos) {
+
+                        for (let j = 0; j < photos.length; j++) {
+
+                            if (album[i].id == photos[j].albumId) {
+
+                                let titlePhoto = photos[j].title
+                                let ph = photos[j].thumbnailUrl
+
+                                let $componentBlockPhoto = $('<div class = "albumImageSection"></div>')
+
+                                let $componentTitlePhoto = $('<div>' + titlePhoto + '</div>')
+                                $componentBlockPhoto.append($componentTitlePhoto)
+
+                                let $componentPhoto = $("<img src='"+ ph +"'>")
+                                $componentBlockPhoto.append($componentPhoto)
+
+                                $photosCollection.append($componentBlockPhoto)
+                            }
+                        }
+                    })
+                }
+            }
         })
     })
     return $componentUser

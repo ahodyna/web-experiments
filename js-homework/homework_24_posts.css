@@ -22,3 +22,19 @@
    text-decoration: underline;
    cursor: pointer;
 }
+
+.album {
+   border: 3px solid green;   
+}
+
+.photosCollection {
+   display: flex;
+   flex-direction: row;
+   flex-wrap: wrap;
+}
+
+.albumImageSection{
+   padding: 5px;
+   height: 210px;
+   width: 210px;
+}
