@@ -166,11 +166,12 @@ function createUserComponent(userId, name, mail, street, city, companyName, bs) 
                             if (album[i].id == photos[j].albumId) {
 
                                 let titlePhoto = photos[j].title
+                                let title = titlePhoto.substring(0, 15)
                                 let ph = photos[j].thumbnailUrl
 
                                 let $componentBlockPhoto = $('<div class = "albumImageSection"></div>')
 
-                                let $componentTitlePhoto = $('<div>' + titlePhoto + '</div>')
+                                let $componentTitlePhoto = $('<div>' + title + "..." + '</div>')
                                 $componentBlockPhoto.append($componentTitlePhoto)
 
                                 let $componentPhoto = $("<img src='"+ ph +"'>")
