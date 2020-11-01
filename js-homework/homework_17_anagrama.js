@@ -1,8 +1,8 @@
 function toMap(str) {
     let anagramaMap = new Map();
     for (let i = 0; i < str.length; i++) {
-        if (anagramaMap.has(str[i])){
-           let counter = anagramaMap.get(str[i])
+        if (anagramaMap.has(str[i])) {
+            let counter = anagramaMap.get(str[i])
             counter++
             anagramaMap.set(str[i], counter)
         } else {
@@ -35,3 +35,26 @@ console.log(isAnagrama('alina', 'anika'))
 console.log(isAnagrama('alina', 'arila'))
 
 // напишите функцию, которая принимает два слова. И возращает true, если слова являются анаграммами или false в противному случае.
+
+
+// 2 варіант
+
+let anagrama = (str1, str2) => {
+    if (str1.length !== str2.length) {
+        return false
+    }
+    str1 = str1.toLowerCase();
+    str2 = str2.toLowerCase();
+
+    str1 = str1.split('').sort();
+    str2 = str2.split('').sort();
+
+    for (let i = 0; i < str1.length; i++) {
+        if (str1[i] !== str2[i]) {
+            return false;
+        }
+
+    }
+    return true;
+}
+
