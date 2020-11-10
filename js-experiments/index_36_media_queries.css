@@ -1,0 +1,19 @@
+.container {
+    display: inline-flex;
+    align-items: center;
+    justify-content: space-around;
+}
+
+.container1 {
+    background-color: green;
+}
+.container2 {
+    background-color: blueviolet;
+}
+
+@media screen and (max-width: 600px) {
+    .container1 {
+      background-color: chocolate;
+    }
+  }
+
