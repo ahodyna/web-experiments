@@ -1,0 +1,14 @@
+.bordersGeneralElem{
+    width: 600px;
+    height: 500px;
+    margin: 0px;
+    border: 0px;
+    background-color: rgb(22, 97, 12);
+}
+
+#square{
+    background-color: rgb(238, 215, 184);
+    height: 50px;
+    width: 50px;
+    position: relative;
+}
