@@ -118,8 +118,9 @@ label #sidebar_btn:hover{
     width: 80px;
 }
 
-.content{
+.content{ 
     margin-left: 250px;
+    padding-top: 70px;
     background: url(https://wallpapercave.com/wp/wp2504235.jpg) no-repeat;
     background-position: center;
     background-size: cover;
@@ -133,4 +134,16 @@ label #sidebar_btn:hover{
 
 #check{
     display: none;
+}
+
+#timeSection{
+height: 100px;
+width: 800px;
+margin: auto;
+position: absolute;
+top: 0; left: 0; bottom: 0; right: 0;
+font-family: courier, monospace;
+text-align: center;
+color: antiquewhite;
+font-size: 100px;
 }
