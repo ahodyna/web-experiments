@@ -121,7 +121,6 @@ label #sidebar_btn:hover{
 .content{ 
     margin-left: 250px;
     padding-top: 70px;
-    background: url(https://wallpapercave.com/wp/wp2504235.jpg) no-repeat;
     background-position: center;
     background-size: cover;
     height: 100vh;
@@ -144,6 +143,47 @@ position: absolute;
 top: 0; left: 0; bottom: 0; right: 0;
 font-family: courier, monospace;
 text-align: center;
-color: antiquewhite;
+color: black;
 font-size: 100px;
+}
+
+#weatherSection{
+    background-color:#dee3f0;
+    height: 40%;
+    width: 30%;
+    text-align: center;
+    left:35%;
+    border-radius:22px;
+    margin: 8px;
+    position: fixed;
+
+}
+
+#inputWeather{
+    border:none;
+    outline:none;
+    display:inline-block;
+    height:41px;
+    vertical-align:middle;
+    border-radius:22px;
+    width:260px;
+    box-sizing:border-box;
+    padding:18px; 
+    margin: 5px;
+}
+
+#divWeatherNameCity{
+    font-size: 22px;
+    font-weight: 600;
+}
+
+#divWeatherTemperatureCity{
+    margin: 4px;
+    font-size: 50px;
+    font-weight: 800;
+}
+
+#divWeatherDescriptionCity{
+    font-size: 25px;
+    font-weight: 500;
 }
