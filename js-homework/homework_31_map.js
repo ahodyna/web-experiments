@@ -72,36 +72,50 @@ let tours = [
 
 function findPopularWord(tour) {
 
-        const descriptionWords = tour.description.split(/\W+/);
-        const map = new Map();
+    const descriptionWords = tour.description.split(/\W+/);
+    const map = new Map();
 
-        for (let j = 0; j < descriptionWords.length; j++) {
-            
-            const descriptionToken = descriptionWords[j]
-            if (descriptionToken.length > 3) {
-                
-                if (map.has(descriptionToken)) {
-                    map.set(descriptionToken, map.get(descriptionToken) + 1);
-                } else {
-                    map.set(descriptionToken, 1)
-                }
+    for (let j = 0; j < descriptionWords.length; j++) {
+
+        const descriptionToken = descriptionWords[j]
+        if (descriptionToken.length > 3) {
+
+            if (map.has(descriptionToken)) {
+                map.set(descriptionToken, map.get(descriptionToken) + 1);
+            } else {
+                map.set(descriptionToken, 1)
             }
         }
-        let counter = 0;
-        let word = '';
-        for (let [key, value] of map) {
-            if (value > counter) {
-                counter = value;
-                word = key;
-            }
+    }
+    let counter = 0;
+    let word = '';
+    for (let [key, value] of map) {
+        if (value > counter) {
+            counter = value;
+            word = key;
         }
-    return {  
-        counter : counter,
-        word : word,
+    }
+    return {
+        counter: counter,
+        word: word,
     }
 }
 
-for (let i = 0; i < tours.length; i++){
-    let result = findPopularWord(tours[i]);
-    console.log(tours[i].name + ' - ' + result.counter + ' - ' + result.word)
+function findMostPopularWord() {
+
+    let popularWord = '';
+    let counterPopularWord = 0;
+
+    for (let i = 0; i < tours.length; i++) {
+        let result = findPopularWord(tours[i]);
+
+        if (result.counter > counterPopularWord) {
+            counterPopularWord = result.counter;
+            popularWord = result.word;
+        }
+        
+    }
+    console.log(counterPopularWord + ' - ' + popularWord)
 }
+
+findMostPopularWord();
