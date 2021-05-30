@@ -113,9 +113,47 @@ function findMostPopularWord() {
             counterPopularWord = result.counter;
             popularWord = result.word;
         }
-        
+
     }
     console.log(counterPopularWord + ' - ' + popularWord)
 }
 
 findMostPopularWord();
+
+
+
+let userDB = [
+    { id: 1, name: "vasia", age: 15, country: "UK" },
+    { id: 2, name: "alina", age: 24, country: "UK" },
+    { id: 3, name: "margary", age: 24, country: "UK" },
+    { id: 4, name: "mary", age: 34, country: "UAH" }
+]
+
+function searchUserById(id) {
+    let result = null;
+    
+    userDB.forEach(item => {
+        if(item.id == id) {
+            result = item
+        }
+    })
+    return result
+}
+
+let user1 = searchUserById(3)
+console.log(user1)
+
+
+function updateUserById(id, user) {
+    for (let i=0; i< userDB.length; i++) {
+        if (userDB[i].id === id) {
+            user.id = userDB[i].id
+            userDB[i] = user
+        }
+    }
+    
+}
+
+
+updateUserById(1, { name: user1.name, age: 16, country: user1.country, nationality: 'Ukranian' })
+console.log(searchUserById(1))
